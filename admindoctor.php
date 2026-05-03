@@ -1,5 +1,6 @@
 <main class="container">
     <h2>Manage Medical Staff</h2>
+    <link rel="stylesheet" href="style.css">
     <table class="data-table">
         <thead>
             <tr>

@@ -1,0 +1,27 @@
+<?php
+session_start();
+require_once 'db.php';
+
+// Check if user is Admin[cite: 1]
+if ($_SESSION['role'] !== 'Admin') {
+    die("Unauthorized Access");
+}
+
+if (isset($_GET['id'])) {
+    $doctorId = $_GET['id'];
+
+    // Using Transaction for safe deletion if needed[cite: 1]
+    try {
+        $pdo->beginTransaction();
+        
+        $stmt = $pdo->prepare("DELETE FROM doctors WHERE doctor_id = ?");
+        $stmt->execute([$doctorId]);
+        
+        $pdo->commit();
+        header("Location: ../admin_manage_doctors.php?deleted=true");
+    } catch (Exception $e) {
+        $pdo->rollBack();
+        header("Location: ../admin_manage_doctors.php?error=failed");
+    }
+}
+?>

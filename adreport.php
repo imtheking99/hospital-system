@@ -1,4 +1,5 @@
 <main class="container">
+    <link rel="stylesheet" href="style.css">
     <h2>Hospital Performance Report</h2>
     <div class="stats-grid">
         <!-- Data pulled from 'vw_AppointmentSummary' View -->
