@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'db.php';
+require_once 'includes/db.php';
 
 if (isset($_POST['book_now']) && $_SESSION['role'] == 'Patient') {
     $patientId = $_SESSION['user_id'];

@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="login-wrapper">
-        <form action="tier2/auth.php" method="POST" class="login-form">
+        <form action="includes/auth.php" method="POST" class="login-form">
             <h2>Hospital Portal Login</h2>
             <div class="input-group">
                 <label>Username</label>
