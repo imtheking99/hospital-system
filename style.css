@@ -1,0 +1,32 @@
+:root {
+    --primary: #2c3e50;
+    --secondary: #3498db;
+    --danger: #e74c3c;
+    --light: #ecf0f1;
+}
+
+body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--light); }
+
+.container { width: 90%; max-width: 1200px; margin: 20px auto; }
+
+.main-nav { background: var(--primary); color: white; display: flex; justify-content: space-between; padding: 15px 5%; align-items: center; }
+
+.nav-links { list-style: none; display: flex; gap: 20px; }
+
+.nav-links a { color: white; text-decoration: none; font-weight: bold; }
+
+.login-wrapper { height: 100vh; display: flex; justify-content: center; align-items: center; }
+
+.login-form { background: white; padding: 40px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); width: 350px; }
+
+.input-group { margin-bottom: 20px; }
+
+input, select { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ddd; border-radius: 5px; }
+
+button { width: 100%; padding: 12px; background: var(--secondary); color: white; border: none; border-radius: 5px; cursor: pointer; }
+
+.data-table { width: 100%; border-collapse: collapse; background: white; margin-top: 20px; }
+
+.data-table th, .data-table td { padding: 15px; border: 1px solid #ddd; text-align: left; }
+
+.btn-delete { color: var(--danger); }
