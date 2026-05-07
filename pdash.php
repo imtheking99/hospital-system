@@ -34,7 +34,7 @@ try {
 <head>
     <meta charset="UTF-8">
     <title>Patient Dashboard - City Care Hospital</title>
-    <link rel="stylesheet" href="style3.css">
+    <link rel="stylesheet" href="style-p.css">
 </head>
 <body>
     <nav class="main-nav">
@@ -103,4 +103,4 @@ try {
         </section>
     </main>
 </body>
-</html>
+</html>a
