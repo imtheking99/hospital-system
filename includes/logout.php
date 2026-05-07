@@ -1,7 +1,7 @@
 <?php
 // start Session 
 session_start();
-`
+
 //erase all session variables
 session_unset();
 
