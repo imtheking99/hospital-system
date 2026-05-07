@@ -18,7 +18,7 @@
                 <td>0771234567</td>
                 <td>
                     <a href="edit_doctor.php?id=1" class="btn-edit">Edit</a>
-                    <a href="tier2/delete_doctor.php?id=1" class="btn-delete" onclick="return confirm('Delete this record?')">Delete</a>
+                    <a href="includes/deldoctor.php?id=1" class="btn-delete" onclick="return confirm('Delete this record?')">Delete</a>
                 </td>
             </tr>
         </tbody>
