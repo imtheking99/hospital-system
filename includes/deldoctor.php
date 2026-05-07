@@ -18,10 +18,10 @@ if (isset($_GET['id'])) {
         $stmt->execute([$doctorId]);
         
         $pdo->commit();
-        header("Location: ../admin_manage_doctors.php?deleted=true");
+        header("deldoctor.php?deleted=true");
     } catch (Exception $e) {
         $pdo->rollBack();
-        header("Location: ../admin_manage_doctors.php?error=failed");
+        header("deldoctor.php?error=failed");
     }
 }
 ?>

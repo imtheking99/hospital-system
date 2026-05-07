@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="style3.css">
 <nav class="main-nav">
     <div class="logo">City Care Hospital</div>
     <ul class="nav-links">

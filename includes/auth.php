@@ -23,9 +23,9 @@ if (isset($_POST['login_btn'])) {
 
         // Redirect based on role
         if ($user['role'] == 'Admin') {
-            header("Location: ../admin_reports.php");
+            header("Location: ../adreport.php");
         } else {
-            header("Location: ../patient_dashboard.php");
+            header("Location: ../pdash.php");
         }
     } else {
         header("Location: ../index.php?error=invalidcredentials");
