@@ -7,50 +7,114 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
 <head>
     <title>Admin Dashboard</title>
     <style>
-        body {
-            margin: 0;
-            font-family: Arial;
-            display: flex;
-        }
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+}
 
-        .sidebar {
-            width: 220px;
-            height: 100vh;
-            background: #2c3e50;
-            color: white;
-            padding-top: 20px;
-            position: fixed;
-        }
+/* ===== TOP NAVBAR ===== */
+.main-nav {
+    width: calc(100% - 50px);
+    height: 60px;
+    background: linear-gradient(90deg, #1e3c72, #2a5298);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 25px;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
 
-        .sidebar a {
-            display: block;
-            color: white;
-            padding: 12px;
-            text-decoration: none;
-        }
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+}
 
-        .sidebar a:hover {
-            background: #34495e;
-        }
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
 
-        .content {
-            margin-left: 220px;
-            padding: 20px;
-            width: 100%;
-            background: #f4f6f8;
-            min-height: 100vh;
-        }
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
 
-        .card {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-        }
+.nav-links li a:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+    width: 220px;
+    height: calc(100vh - 60px); /* navbar height remove */
+    background: #2c3e50;
+    color: white;
+    position: fixed;
+    top: 60px; /* start below navbar */
+    left: 0;
+    padding-top: 20px;
+    overflow-y: auto;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+}
+
+.sidebar h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sidebar a {
+    display: block;
+    color: white;
+    padding: 12px 18px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    background: #34495e;
+    padding-left: 25px;
+}
+
+/* ===== CONTENT AREA ===== */
+.content {
+    margin-left: 220px;
+    margin-top: 60px; /* navbar space */
+    padding: 20px;
+    min-height: calc(100vh - 60px);
+    background: #f4f6f8;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
     </style>
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+<nav class="main-nav">
+    <div class="logo">City Care Hospital</div>
+
+    <ul class="nav-links">
+        <li><a href="admin-dashboard.php?page=dashboard">Dashboard</a></li>
+        <li><a href="../includes/logout.php">Logout</a></li>
+    </ul>
+</nav>
 
 <div class="sidebar">
     <h3 style="text-align:center;">Admin Panel</h3>
@@ -84,6 +148,5 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
 
     </div>
 </div>
-
 </body>
 </html>
