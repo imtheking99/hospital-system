@@ -40,7 +40,7 @@ try {
     <nav class="main-nav">
         <div class="logo">City Care Hospital</div>
         <ul class="nav-links">
-            <li><a href="pdash.php">Dashboard</a></li>
+            <li><a href="pupdate.php">Dashboard</a></li>
             <li><a href="includes/logout.php">Logout</a></li>
         </ul>
     </nav>
