@@ -2,7 +2,7 @@
 session_start();
 require_once 'db.php';
 
-// Check if user is Admin[cite: 1]
+// Check if user is Admin
 if ($_SESSION['role'] !== 'Admin') {
     die("Unauthorized Access");
 }
@@ -10,7 +10,7 @@ if ($_SESSION['role'] !== 'Admin') {
 if (isset($_GET['id'])) {
     $doctorId = $_GET['id'];
 
-    // Using Transaction for safe deletion if needed[cite: 1]
+    // Using Transaction for safe deletion if needed
     try {
         $pdo->beginTransaction();
         
