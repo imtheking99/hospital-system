@@ -4,7 +4,7 @@ require_once '../includes/db.php';
 
 if (isset($_POST['process_payment'])) {
     $appointment_id = $_POST['appointment_id'];
-    $amount = 2500.00; // Example fixed fee for specialists
+    $amount = 500.00; // fixed fee for specialists
 
     try {
         // Calling the Stored Procedure (Tier 3)
