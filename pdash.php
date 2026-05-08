@@ -9,6 +9,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'Patient') {
 }
 
 $patient_id = $_SESSION['user_id'];
+$username = $_SESSION['username'];
 
 // 2. getting list of doctors
 try {
@@ -40,13 +41,14 @@ try {
     <nav class="main-nav">
         <div class="logo">City Care Hospital</div>
         <ul class="nav-links">
-            <li><a href="pdash.php">Dashboard</a></li>
+            <li><a href="">Dashboard</a></li>
+            <li><a href="my_appointments.php">My Appointments</a></li>
             <li><a href="includes/logout.php">Logout</a></li>
         </ul>
     </nav>
 
     <main class="container">
-        <h2>Welcome Patient #<?php echo $_SESSION['user_id']; ?></h2>
+        <h2>Welcome Patient <?php echo htmlspecialchars($username); ?></h2>
 
         <section class="booking-card">
             <h3>Book a New Appointment</h3>
