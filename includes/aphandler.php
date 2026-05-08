@@ -12,10 +12,10 @@ if (isset($_POST['book_now']) && $_SESSION['role'] == 'Patient') {
         $stmt = $pdo->prepare("CALL sp_BookAppointment(?, ?, ?)");
         $stmt->execute([$patientId, $doctorId, $date]);
         
-        header("Location: ../my_appointments.php?status=success");
+        header("Location: ../pdash.php?success=bookingconfirmed");
     } catch (Exception $e) {
         // Handle database errors or trigger failures
-        header("Location: ../patient_dashboard.php?error=bookingfailed");
+        header("Location: ../pdash.php?error=bookingfailed");
     }
 }
 ?>
