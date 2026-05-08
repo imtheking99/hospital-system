@@ -1,34 +1,55 @@
 <?php
+
 session_start();
 require_once 'db.php';
+if (
+    !isset($_SESSION['user_id']) ||
+    $_SESSION['role'] !== 'Patient'
+) {
 
-// Check if user is logged in and is a patient
-if (isset($_POST['book_now']) && $_SESSION['role'] == 'Patient') {
+    header("Location: ../index.php");
+    exit();
+}
+
+if (isset($_POST['book_now'])) {
+
     $patientId = $_SESSION['user_id'];
+
     $doctorId = $_POST['doctor_id'];
+
     $date = $_POST['appointment_date'];
 
     try {
-        // 1. Execute the Stored Procedure
-        $stmt = $pdo->prepare("CALL sp_BookAppointment(?, ?, ?)");
-        $stmt->execute([$patientId, $doctorId, $date]);
-        
-        // 2. Fetch the ID of the appointment we just created
-        // We use a query to get the most recent appointment for this patient
-        $stmt_id = $pdo->prepare("SELECT appointment_id FROM appointments WHERE patient_id = ? ORDER BY appointment_id DESC LIMIT 1");
-        $stmt_id->execute([$patientId]);
-        $result = $stmt_id->fetch();
-        $app_id = $result['appointment_id'];
 
-        // 3. Redirect to checkout with the app_id in the URL
-        // This prevents the "Undefined array key" error on the payment page
-        header("Location: ../payment/checkout.php?app_id=" . $app_id);
+  $stmt = $pdo->prepare("CALL sp_BookAppointment(?, ?, ?, ?)");
+$stmt->execute([
+    $patientId,
+    $doctorId,
+    $date,
+    $time
+]);
+
+
+        $stmt->closeCursor();
+
+
+        header("Location: ../my_appointments.php?status=success");
+
         exit();
 
-    } catch (Exception $e) {
-        // Log error and redirect back to dashboard
+    } catch (PDOException $e) {
+
         header("Location: ../pdash.php?error=bookingfailed");
+
         exit();
     }
 }
+
+else {
+
+    header("Location: ../pdash.php");
+
+    exit();
+}
 ?>
+

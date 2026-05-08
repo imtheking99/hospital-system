@@ -25,12 +25,36 @@ DELIMITER $$
 --
 -- Procedures
 --
-DROP PROCEDURE IF EXISTS `sp_BookAppointment`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_BookAppointment` (IN `p_id` INT, IN `d_id` INT, IN `a_date` DATE)   BEGIN
+DROP PROCEDURE IF EXISTS sp_BookAppointment;
+
+DELIMITER $$
+
+CREATE PROCEDURE sp_BookAppointment (
+    IN p_id INT,
+    IN d_id INT,
+    IN a_date DATE
+)
+BEGIN
+
     START TRANSACTION;
-        INSERT INTO appointments (patient_id, doctor_id, appointment_date, status)
-        VALUES (p_id, d_id, a_date, 'Confirmed');
+
+    INSERT INTO appointments
+    (
+        patient_id,
+        doctor_id,
+        appointment_date,
+        status
+    )
+    VALUES
+    (
+        p_id,
+        d_id,
+        a_date,
+        'Pending'
+    );
+
     COMMIT;
+
 END$$
 
 DELIMITER ;
