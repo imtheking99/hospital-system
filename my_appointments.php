@@ -372,12 +372,14 @@ try {
                 <table class="data-table">
 
                     <thead>
-                        <tr>
-                            <th>Doctor</th>
-                            <th>Appointment Date</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
+                    <tr>
+    <th>Appointment No</th>
+    <th>Doctor</th>
+    <th>Date</th>
+    <th>Time</th>
+    <th>Status</th>
+    <th>Action</th>
+</tr>
                     </thead>
 
                     <tbody>
@@ -386,60 +388,65 @@ try {
 
                             <?php foreach($appointments as $row): ?>
 
-                                <tr>
+                               <tr>
 
-                                    <td>
-                                        <strong>
-                                            Dr. <?php echo htmlspecialchars($row['doctor_name']); ?>
-                                        </strong>
-                                    </td>
+    <td>
+        <strong>
+            AP-<?php echo str_pad($row['appointment_id'], 4, "0", STR_PAD_LEFT); ?>
+        </strong>
+    </td>
 
-                                    <td>
-                                        <?php echo htmlspecialchars($row['appointment_date']); ?>
-                                    </td>
+    <td>
+        <strong>
+            Dr. <?php echo htmlspecialchars($row['doctor_name']); ?>
+        </strong>
+    </td>
 
-                                    <td>
+    <td>
+        <?php echo htmlspecialchars($row['appointment_date']); ?>
+    </td>
 
-                                        <span class="status-badge <?php echo strtolower($row['status']); ?>">
+    <td>
+        <?php echo $row['appointment_time'] ?? 'Not Set'; ?>
+    </td>
 
-                                            <?php echo htmlspecialchars($row['status']); ?>
+    <td>
 
-                                        </span>
+        <span class="status-badge <?php echo strtolower($row['status']); ?>">
 
-                                    </td>
+            <?php echo htmlspecialchars($row['status']); ?>
 
-                                    <td>
+        </span>
 
-                                        <?php if($row['status'] !== 'Cancelled'): ?>
+    </td>
 
-                                            <form method="POST"
-                                                  onsubmit="return confirm('Confirm appointment cancellation?');">
+    <td>
 
-                                                <input type="hidden"
-                                                       name="appointment_id"
-                                                       value="<?php echo $row['appointment_id']; ?>">
+        <?php if($row['status'] == 'Pending'): ?>
 
-                                                <button type="submit"
-                                                        name="cancel_appointment"
-                                                        class="btn-cancel">
+            <span style="color:orange;font-weight:bold;">
+                Waiting For Confirmation
+            </span>
 
-                                                    Cancel
+        <?php elseif($row['status'] == 'Confirmed'): ?>
 
-                                                </button>
+            <span style="color:green;font-weight:bold;">
 
-                                            </form>
+                Appointment Confirmed
 
-                                        <?php else: ?>
+            </span>
 
-                                            <span style="color:#999;">
-                                                N/A
-                                            </span>
+        <?php else: ?>
 
-                                        <?php endif; ?>
+            <span style="color:red;font-weight:bold;">
+                Cancelled
+            </span>
 
-                                    </td>
+        <?php endif; ?>
 
-                                </tr>
+    </td>
+
+</tr>
 
                             <?php endforeach; ?>
 
