@@ -120,7 +120,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
     <h3 style="text-align:center;">Admin Panel</h3>
 
     <a href="admin-dashboard.php?page=dashboard">Dashboard</a>
-        <a href="admin-dashboard.php?page=appointments">Appointments</a>
+    <a href="admin-dashboard.php?page=appointments">Appointments</a>
     <a href="admin-dashboard.php?page=doctors">Doctors</a>
     <a href="admin-dashboard.php?page=payments">Payments</a>
      <a href="admin-dashboard.php?page=users">Users</a>
