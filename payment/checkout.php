@@ -24,5 +24,6 @@
             
             <button type="submit" name="process_payment">Confirm & Pay</button>
         </form>
+        <a href="cancel_booking.php?app_id=<?php echo $_GET['app_id']; ?>" class="btn-cancel">Cancel and Go Back</a>
     </section>
 </main>
